@@ -1,0 +1,207 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    
+}
+body{
+    overflow: hidden;
+}
+
+.scene{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(#111425,#3751e0);
+    background-attachment: fixed;
+    overflow: hidden;
+}
+img{
+    pointer-events: none;
+}
+.scene .moon{
+    position: absolute;
+    top: 100px;
+    left: 400px;
+    width: 100px;
+    height: 100px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.5s;
+    cursor: pointer;  
+}
+.scene .moon::before{
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(#111425,#3751e0);
+    background-attachment: fixed;
+} 
+.scene .forest{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: scale(1.2);
+    z-index: 10;
+    transition: .5s;
+
+}
+.scene i{
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: animate linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        opacity: 0;
+        transform: translateY(0);
+    }
+    10%,90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+}
+.scene .bg{
+    position: absolute;
+    bottom: 0;
+    max-width: 100%;
+    transition: .5s;
+    z-index: 11;
+    transform: translateY(100%);
+}
+.cloud1{
+    position: absolute;
+    max-width: 600px;
+    left: 0;
+    z-index: 100;
+    animation: animateCloud 50s linear infinite;
+} 
+.cloud2{
+    position: absolute;
+    max-width: 600px;
+    left: 0;
+    z-index: 100;
+    animation: animateCloud 35s linear infinite;
+} 
+.cloud3{
+    position: absolute;
+    max-width: 600px;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    animation: animateCloud 80s linear infinite;
+} 
+.cloud4{
+    position: absolute;
+    max-width: 200px;
+    top: 200px;
+    left: 0;
+    z-index: 100;
+    animation: animateCloud 70s linear -20s infinite;
+} 
+.cloud5{
+    position: absolute;
+    max-width: 500px;
+    top: 150px;
+    left: 0;
+    z-index: 100;
+    animation: animateCloud 40s linear -5s infinite;
+
+} 
+.cloud6{
+    position: absolute;
+    max-width: 400px;
+    top: 75px;
+    left: 0;
+    z-index: 100;
+    animation: animateCloud 30s linear -10s infinite;
+} 
+@keyframes animateCloud{
+    0%{
+        transform: translateX(-100%)  scale(1.5);
+    }
+    100%{
+        transform: translateX(400%) scale(1.5);
+       
+    }
+}
+.scene::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    width: 100%;
+    height: 250px;
+    transition: 0.5s;
+    background: linear-gradient(transparent,#2598f3);
+}
+.scene.active::before{
+    bottom: 0;
+}
+.scene.active{
+    background: linear-gradient(#ffeb3b,#ff9800);
+}
+.scene.active .moon{
+    left: 200px;
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 0 40px rgba(255, 255, 255, 0.5),
+        0 0 0 80px rgba(255, 255, 255, 0.5),
+        0 0 0 120px rgba(255, 255, 255, 0.3),
+        0 0 0 180px rgba(255, 255, 255, 0.2),
+        0 0 0 240px rgba(255, 255, 255, 0.2),
+        0 0 0 300px rgba(255, 255, 255, 0.1);
+}
+.scene.active .moon::before{
+   opacity: 0;
+}
+.scene.active .forest{
+    bottom: -100%;
+ }
+ .scene.active i{
+    display: none;
+ }
+ .scene.active .bg{
+    transform: translateY(0);
+ }
+
+ .scene .startButton{
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%,-50%);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgb(27, 25, 99),rgb(127, 196, 224));
+    width: 300px;
+    height: 150px;
+    z-index: 1000;
+    cursor: pointer;
+    box-shadow: 10px 10px 50px 10px rgb(38, 46, 79);
+    border-radius: 20px;
+ }
+ .scene .startButton span{
+    color: rgb(106, 237, 224);
+    font-size: 90px;
+ }
+ .titlebar {
+    background-color: #2f3241;
+    height: 30px;
+    /* border-bottom: 1px solid #59e7b3; */
+    -webkit-app-region: drag;    /* Allow user to drag the window using this titlebar */
+    -webkit-user-select: none;   /* Prevent user from selecting things */
+    user-select: none;
+    overflow: hidden;
+}
